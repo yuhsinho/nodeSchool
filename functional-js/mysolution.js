@@ -24,17 +24,38 @@ module.exports = function checkUsersValid(goodUsers) {
     }
 }
 
-// module.exports = function countWords(inputWords) {
-//     // console.log(inputWords)
-//     console.log(inputWords.reduce((a, b) => {
-//         let obj = {}
-//         if (a !== undefined) {
-//             obj[a] = a.length
-//         } else {
-//             obj[b] = b.length
-//         }
-//         // console.log(obj)
-//         // console.log('a',a, 'b',b, b.length)
-//         return obj
-//     }))
-// }
+// ***
+module.exports = function countWords(inputWords) {
+   return inputWords.reduce((a, b) => {
+            a[b] = ++a[b] || 1
+            return a
+          }, {})
+}
+
+/*
+module.exports = function countWords(inputWords) {
+    let obj = {};
+    inputWords.forEach(w => {
+        if (!obj.hasOwnProperty(w)) {
+            obj[w] = 1;
+        } else {
+            obj[w] += 1;
+        }
+    });
+    return obj;
+}
+*/
+
+module.exports = function reduce(arr, fn, initial) {
+    if (!arr.length) return initial
+    var head = arr[0];
+    var tail = arr.slice(1);
+    initial = fn(initial, head);
+    return reduce(tail, fn, initial);
+}
+
+module.exports = function duckCount() {
+   return Object.values(arguments)
+            .filter(obj => Object.prototype.hasOwnProperty.call(obj, 'quack'))
+            .length;
+}
