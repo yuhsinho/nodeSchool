@@ -59,3 +59,42 @@ module.exports = function duckCount() {
             .filter(obj => Object.prototype.hasOwnProperty.call(obj, 'quack'))
             .length;
 }
+
+// ***
+var slice = Array.prototype.slice;
+module.exports = function logger(namespace) {
+    /*
+    return function info(...message) {
+        console.log(namespace, ...message)
+    }
+    */
+   return function() {
+       console.log.apply(console, [namespace].concat(slice.call(arguments)))
+   }
+}
+
+module.exports = function (namespace) {
+    return console.log.bind(console, namespace)
+}
+
+module.exports = function arrayMap(arr, fn) {
+    return arr.reduce((x,y) => {
+        x.push(fn(y))
+        return x
+    }, [])
+}
+
+// *** need to review this
+module.exports = function Spy(target, method) {
+    var originalFn = target[method];
+    
+    var result = {
+        count: 0
+    }
+
+    target[method] = function() {
+        result.count ++;
+        return originalFn.apply(this, arguments)
+    }
+    return result;
+}
