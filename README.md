@@ -5,8 +5,8 @@ NODESCHOOL is an open source workshops that teach web software skills.
 CORE 
 
 (1) javascripting: Learn the basics of JavaScript.
->> npm install -g javascripting
->> javascripting
+> npm install -g javascripting
+> javascripting
 
 (2) learnyounode: Learn the basics of node: asynchronous i/o, http.
 > npm install -g learnyounode
