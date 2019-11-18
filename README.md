@@ -1,4 +1,4 @@
-My solutions in JavaScript for the online tutorial "nodeSchool".
+My solutions in JavaScript for the challenge/tutorial "nodeSchool".
 
 NODESCHOOL is an open source workshops that teach web software skills.
 
